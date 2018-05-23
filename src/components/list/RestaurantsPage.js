@@ -2,34 +2,32 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchRestaurantsWithRedux} from '../../actions/listActions';
 import RestaurantListItemComponent from './RestaurantListItemComponent';
-import DetailComponent from './DetailComponent';
+import MapComponent from './MapComponent';
 
-class ListPage extends React.Component {
+class RestaurantsPage extends React.Component {
   componentDidMount() {
     this.props.fetchRestaurantsWithRedux();
   }
-
+  renderMapComponent(restaurants) {
+    return <MapComponent restaurants={restaurants}/>;
+  }
   restaurantRow(restaurant, index) {
     return <RestaurantListItemComponent restaurant={restaurant} index={index}/>;
-  }
-
-  renderDetailComponent() {
-      return <DetailComponent restaurant={this.props.restaurants[0]} />;
   }
 
   render() {
     return (
 
       <section>
+
         <div className="container">
           <div className="tile is-ancestor">
-            <div className="tile is-parent is-5 is-vertical">
+            <div className="tile is-parent is-12 is-vertical">
               {this.props.restaurants.map(this.restaurantRow)}
             </div>
-            {this.renderDetailComponent()}
 
           </div>
-
+          {this.renderMapComponent(this.props.restaurants)}
         </div>
       </section>
 
@@ -38,10 +36,14 @@ class ListPage extends React.Component {
   }
 }
 
+RestaurantsPage.defaultProps = {
+  restaurants: []
+};
+
 function mapStateToProps(state, ownProps) {
   return {
     restaurants: state.restaurants
   };
 }
 
-export default connect(mapStateToProps, {fetchRestaurantsWithRedux})(ListPage); // ListPage automatically gets a dispatch property
+export default connect(mapStateToProps, {fetchRestaurantsWithRedux})(RestaurantsPage); // ListPage automatically gets a dispatch property

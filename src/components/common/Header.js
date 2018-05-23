@@ -7,7 +7,7 @@ const Header = () => {
       <div className="container" >
         <div className="navbar-brand" >
 
-          <a className="navbar-item" href = "https://bulma.io">
+          <a className="navbar-item" href = "#">
             <h1><strong>Lunch Tyme</strong></h1>
           </a>
           <a role = "button" className="navbar-burger" aria-label = "menu" aria-expanded="false">

@@ -15,4 +15,15 @@ nav {
 }
 
 
+.restaurant-content {
+  list-style-type: none;
+}
 
+.is-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+.is-animated {
+  transition: 0.5s;
+}
