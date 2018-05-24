@@ -28,7 +28,7 @@ class DetailComponent extends React.Component {
                   <figure className="image"><a href="#" onClick={this.expandDetails}><img src="https://imgur.com/4VXrpK5.png" /></a></figure>
                 </div>
                 <div className="hero-body column">
-                    <div className="title is-12">{this.props.restaurant.name}</div>
+                    <div className="title is-12"><a href="#" className="restaurant-anchor">{this.props.restaurant.name}</a></div>
                     <div className="subtitle is-12">{this.props.restaurant.category}</div>
                 </div>
               </div>

@@ -5,9 +5,7 @@ class RestaurantListItemComponent extends React.Component {
   constructor(props) {
     super(props);
   }
-
-
-
+  
   renderDetailComponent() {
       return <DetailComponent restaurant={this.props.restaurant} />;
   }

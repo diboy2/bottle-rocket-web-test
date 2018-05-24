@@ -20,7 +20,7 @@ class RestaurantsPage extends React.Component {
 
       <section>
 
-        <div className="container">
+        <div className="">
           <div className="tile is-ancestor">
             <div className="tile is-parent is-12 is-vertical">
               {this.props.restaurants.map(this.restaurantRow)}

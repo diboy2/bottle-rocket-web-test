@@ -2,8 +2,6 @@ const fetchRestaurantsWithRedux = () => {
   return (dispatch) => {
     dispatch( {type: "FETCH_REQUEST"});
     return fetchRestaurants().then(([response, json]) => {
-      console.log("json");
-      console.log(json);
       if(response.status === 200) {
         dispatch({type: "FETCH_SUCCESS", json});
       }
