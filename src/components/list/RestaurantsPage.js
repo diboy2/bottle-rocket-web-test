@@ -9,7 +9,7 @@ class RestaurantsPage extends React.Component {
     this.props.fetchRestaurantsWithRedux();
   }
   renderMapComponent(restaurants) {
-    return <MapComponent restaurants={restaurants}/>;
+    return <MapComponent restaurants={restaurants} currentRestaurant={this.props.currentRestaurant}/>;
   }
   restaurantRow(restaurant, index) {
     return <RestaurantListItemComponent restaurant={restaurant} index={index}/>;
@@ -37,12 +37,14 @@ class RestaurantsPage extends React.Component {
 }
 
 RestaurantsPage.defaultProps = {
-  restaurants: []
+  restaurants: [],
+  currentRestaurant: null
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    restaurants: state.restaurants
+    restaurants: state.restaurants,
+    currentRestaurant: state.currentRestaurant
   };
 }
 

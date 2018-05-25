@@ -1,5 +1,5 @@
-export default function restaurants(state = [], action)  {
-  switch(action.type) {
+export default function restaurants(state = [], action) {
+  switch (action.type) {
     case "FETCH_REQUEST":
       return state;
     case "FETCH_SUCCESS":

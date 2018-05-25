@@ -20,5 +20,13 @@ const fetchRestaurants = () => {
       });
 };
 
+const setCurrentRestaurant = (restaurant) => {
+  return (dispatch) => {
+    console.log("dispatching restaurant");
+    console.log(restaurant);
+    dispatch({type: "GET_RESTAURANT", restaurant});
+  };
+};
 
-export {fetchRestaurantsWithRedux};
+
+export {fetchRestaurantsWithRedux, setCurrentRestaurant};

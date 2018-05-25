@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
-
+import {connect} from 'react-redux';
+import {setCurrentRestaurant} from '../../actions/listActions';
 
 class DetailComponent extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class DetailComponent extends React.Component {
       areDetailsExpanded: false
     };
     this.expandDetails = this.expandDetails.bind(this);
+    this.selectRestaurant = this.selectRestaurant.bind(this);
   }
 
   expandDetails() {
@@ -16,7 +18,12 @@ class DetailComponent extends React.Component {
     }));
   }
 
+  selectRestaurant() {
+    this.props.setCurrentRestaurant(this.props.restaurant);
+  }
+
   render() {
+
     return (
       <div className={'tile is-horizontal is-animated ' + (this.state.areDetailsExpanded ? 'is-12' :'is-7')}>
         <article className="tile is-12 is-primary" >
@@ -28,7 +35,7 @@ class DetailComponent extends React.Component {
                   <figure className="image"><a href="#" onClick={this.expandDetails}><img src="https://imgur.com/4VXrpK5.png" /></a></figure>
                 </div>
                 <div className="hero-body column">
-                    <div className="title is-12"><a href="#" className="restaurant-anchor">{this.props.restaurant.name}</a></div>
+                    <div className="title is-12"><a href="#" onClick={this.selectRestaurant} className="restaurant-anchor">{this.props.restaurant.name}</a></div>
                     <div className="subtitle is-12">{this.props.restaurant.category}</div>
                 </div>
               </div>
@@ -50,6 +57,11 @@ class DetailComponent extends React.Component {
   }
 }
 
+function mapStateToProps(state, ownProps) {
+  return {
+  };
+}
 
 
-export default DetailComponent;
+
+export default connect(mapStateToProps,{setCurrentRestaurant})(DetailComponent);;

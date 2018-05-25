@@ -12,17 +12,37 @@ class MapComponent extends React.Component {
     const bounds = new window.google.maps.LatLngBounds();
     this.props.restaurants.forEach(restaurant => bounds.extend(new window.google.maps.LatLng(restaurant.location.lat, restaurant.location.lng)));
     this.map.fitBounds(bounds);
-
   }
   render() {
     var self = this;
+
+    let optionalProps = {};
+    console.log("currentRestaurant");
+    console.log(this.props.currentRestaurant);
+
+    if(this.props.currentRestaurant){
+      optionalProps = {
+        center: {
+          lat: this.props.currentRestaurant.location.lat,
+          lng: this.props.currentRestaurant.location.lng
+        },
+        zoom: 18
+      };
+    }
+    else{
+      optionalProps = {
+        onTilesLoaded: () => self.setCenterAndZoom()
+      }
+    }
+
    const GoogleMapExample = withGoogleMap(props => (
 
       <GoogleMap
+        {...optionalProps}
         ref={(ref) => { self.map = ref; }}
         defaultZoom={15}
         defaultCenter={{ lat: 13.727286, lng: 100.568995 }}
-        onTilesLoaded={() => self.setCenterAndZoom()}
+        //
       >
 
         {self.props.restaurants.map(self.renderMapMarker)}
@@ -38,5 +58,6 @@ class MapComponent extends React.Component {
    )
   };
 }
+
 
 export default MapComponent;
