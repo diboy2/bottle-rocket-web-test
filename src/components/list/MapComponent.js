@@ -4,21 +4,24 @@ import MarkerClusterer from 'react-google-maps/lib/addons/MarkerClusterer';
 import MapMarker from './MapMarker';
 
 class MapComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   renderMapMarker(restaurant, index){
     return <MapMarker latitude = {restaurant.location.lat} longitude = {restaurant.location.lng} key = {index} label = {restaurant.name}/>
   }
+
   setCenterAndZoom() {
     const bounds = new window.google.maps.LatLngBounds();
     this.props.restaurants.forEach(restaurant => bounds.extend(new window.google.maps.LatLng(restaurant.location.lat, restaurant.location.lng)));
     this.map.fitBounds(bounds);
   }
+
   render() {
     var self = this;
 
     let optionalProps = {};
-    console.log("currentRestaurant");
-    console.log(this.props.currentRestaurant);
 
     if(this.props.currentRestaurant){
       optionalProps = {
@@ -42,7 +45,6 @@ class MapComponent extends React.Component {
         ref={(ref) => { self.map = ref; }}
         defaultZoom={15}
         defaultCenter={{ lat: 13.727286, lng: 100.568995 }}
-        //
       >
 
         {self.props.restaurants.map(self.renderMapMarker)}

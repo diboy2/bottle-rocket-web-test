@@ -25,7 +25,7 @@ class DetailComponent extends React.Component {
   render() {
 
     return (
-      <div className={'tile is-horizontal is-animated ' + (this.state.areDetailsExpanded ? 'is-12' :'is-7')}>
+      <div className={'tile is-horizontal is-animated has-background-black ' + (this.state.areDetailsExpanded ? 'is-12' :'is-7')}>
         <article className="tile is-12 is-primary" >
           <div className="content tile is-12 is-vertical block">
 
@@ -41,7 +41,7 @@ class DetailComponent extends React.Component {
               </div>
 
             </div>
-            <div >
+            <div className="has-text-weight-semibold has-text-white">
               <ul>
                 {this.props.restaurant.location ? <p>{this.props.restaurant.location.address}</p> : ""}
                 {this.props.restaurant.contact ? <p>{this.props.restaurant.contact.formattedPhone}</p> : ""}

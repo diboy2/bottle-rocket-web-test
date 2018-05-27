@@ -5,6 +5,9 @@ import RestaurantListItemComponent from './RestaurantListItemComponent';
 import MapComponent from './MapComponent';
 
 class RestaurantsPage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount() {
     this.props.fetchRestaurantsWithRedux();
   }
@@ -14,32 +17,19 @@ class RestaurantsPage extends React.Component {
   restaurantRow(restaurant, index) {
     return <RestaurantListItemComponent restaurant={restaurant} index={index}/>;
   }
-
   render() {
     return (
-
       <section>
-
-        <div className="">
           <div className="tile is-ancestor">
             <div className="tile is-parent is-12 is-vertical">
               {this.props.restaurants.map(this.restaurantRow)}
             </div>
-
           </div>
           {this.renderMapComponent(this.props.restaurants)}
-        </div>
       </section>
-
-
     );
   }
 }
-
-RestaurantsPage.defaultProps = {
-  restaurants: [],
-  currentRestaurant: null
-};
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -48,4 +38,4 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-export default connect(mapStateToProps, {fetchRestaurantsWithRedux})(RestaurantsPage); // ListPage automatically gets a dispatch property
+export default connect(mapStateToProps, {fetchRestaurantsWithRedux})(RestaurantsPage);
