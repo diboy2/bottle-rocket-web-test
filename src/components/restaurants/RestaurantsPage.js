@@ -26,7 +26,7 @@ class RestaurantsPage extends React.Component {
               {this.props.restaurants.map(this.restaurantRow)}
             </div>
           </div>
-
+          {this.renderMapComponent(this.props.restaurants)}
       </section>
     );
   }
