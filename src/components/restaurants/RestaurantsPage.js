@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchRestaurantsWithRedux} from '../../actions/listActions';
+import {fetchRestaurantsWithRedux} from '../../actions/restaurantActions';
 import RestaurantListItemComponent from './RestaurantListItemComponent';
 import MapComponent from './MapComponent';
 
@@ -18,6 +18,7 @@ class RestaurantsPage extends React.Component {
     return <RestaurantListItemComponent restaurant={restaurant} index={index}/>;
   }
   render() {
+
     return (
       <section>
           <div className="tile is-ancestor">
@@ -25,13 +26,14 @@ class RestaurantsPage extends React.Component {
               {this.props.restaurants.map(this.restaurantRow)}
             </div>
           </div>
-          {this.renderMapComponent(this.props.restaurants)}
+
       </section>
     );
   }
 }
 
 function mapStateToProps(state, ownProps) {
+
   return {
     restaurants: state.restaurants,
     currentRestaurant: state.currentRestaurant

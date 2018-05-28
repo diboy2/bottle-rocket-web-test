@@ -34,31 +34,28 @@ class MapComponent extends React.Component {
     }
     else{
       optionalProps = {
-        onTilesLoaded: () => self.setCenterAndZoom()
+        onTilesLoaded: () => this.setCenterAndZoom()
       }
     }
 
-   const GoogleMapExample = withGoogleMap(props => (
-
+   const GoogleMapComponent = withGoogleMap(props => (
       <GoogleMap
         {...optionalProps}
         ref={(ref) => { self.map = ref; }}
         defaultZoom={15}
         defaultCenter={{ lat: 13.727286, lng: 100.568995 }}
       >
-
-        {self.props.restaurants.map(self.renderMapMarker)}
-
+      {self.props.restaurants.map(self.renderMapMarker)}
       </GoogleMap>
    ));
    return(
       <div>
-        <GoogleMapExample  containerElement={ <div style={{ height: `500px`, width: `500px`,position:`fixed`,bottom: `0`, right: `0` }} /> }
+        <GoogleMapComponent  containerElement={ <div style={{ height: `500px`, width: `500px`,position:`fixed`,bottom: `0`, right: `0` }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
         />
       </div>
-   )
-  };
+   );
+  }
 }
 
 

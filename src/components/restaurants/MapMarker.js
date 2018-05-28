@@ -7,10 +7,12 @@ class MapMarker extends React.Component {
   }
 
   render() {
-     return <Marker
+    return (
+      <Marker
         position = { { lat:this.props.latitude, lng: this.props.longitude} }
         label = {this.props.label}
-     />
+      />
+    );
   }
 }
 

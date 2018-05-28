@@ -9,8 +9,6 @@ import routes from './routes';
 import bulma from '../node_modules/bulma/css/bulma.css';
 import './styles/styles.css';
 
-
-//import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 const store = configureStore();
 
 render(

@@ -4,4 +4,3 @@ export const ACTION_TYPES  = {
   FETCH_RESTAURANTS_ERROR: "Actions::FetchRestaurantsError",
   GET_RESTAURANT: "Actions::GetRestaurant"
 };
-

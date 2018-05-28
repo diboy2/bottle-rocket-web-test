@@ -1,3 +1,3 @@
 
 
-console.log('This is in dev');
+console.log('Starting server');
